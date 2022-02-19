@@ -1,21 +1,21 @@
 package view;
 
 import rasterize.Raster;
-import rasterize.RasterBufferedImage;
+import rasterize.ImageBuffer;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class Panel extends JPanel {
 
-    private final RasterBufferedImage imageBuffer;
+    private final ImageBuffer imageBuffer;
 
     private static final int WIDTH = 800, HEIGHT = 600;
 
     Panel() {
         setPreferredSize(new Dimension(WIDTH, HEIGHT));
-        imageBuffer = new RasterBufferedImage(WIDTH, HEIGHT);
-        imageBuffer.setClearColor(Color.BLACK.getRGB());
+        imageBuffer = new ImageBuffer(WIDTH, HEIGHT);
+        imageBuffer.setClearValue(Color.BLACK.getRGB());
     }
 
     @Override
@@ -24,7 +24,7 @@ public class Panel extends JPanel {
         imageBuffer.repaint(g);
     }
 
-    public Raster getImageBuffer() {
+    public Raster<Integer> getImageBuffer() {
         return imageBuffer;
     }
 
